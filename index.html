@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Happy New Year</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/TypewriterJS/2.21.0/core.min.js"
+        integrity="sha512-fo6X5UXaTRf/mHuTYJBR3Q/rpPa+LB2KUyDMROluMkZnfEEF4DhQyI5AHRoAe/zzu1Ty58MMmZXG4SuVEpXsng=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <script>
+        window.onload = function () {
+
+            const textElements = Array.from(document.querySelectorAll('#typewriter-gpt-2 p, #typewriter-gpt-2 span, #typewriter-gpt-2 h1'));
+            if (textElements.length) {
+                typeTableContent(textElements);
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            color: darkred;
+            font-family: "Dancing Script", serif;
+            font-optical-sizing: auto;
+            text-shadow: 40px;
+            font-style: bold;
+        }
+
+        #background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+
+</head>
+
+<body class="text-center">
+    <video id="background-video" autoplay muted loop>
+        <source src="bg_video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="container">
+        <div id="typewriter-gpt-2">
+            <h1 class="cover-heading h1">Dear Friends, you brighten each day,
+            </h1>
+            <h1 class="cover-heading h1">With lively chats that light the way;
+            </h1>
+            <h1 class="cover-heading h1">In 2025, let's keep the flow,
+            </h1>
+            <h1 class="cover-heading h1">Of wisdom, laughter & friendship's glow!
+            </h1>
+            <br>
+            <br>
+            <h1 class="cover-heading h1">Happy New Year 2025! </h1>
+            <br>
+            <br>
+            <h1 class="cover-heading h2">Regards,</h1>
+            <h1 class="cover-heading h2">Sivaraj</h1>
+        </div>
+    </div>
+    </div>
+
+
+    <script>
+        function typeTableContent(elements) {
+            const cells = elements.map(element => {
+                const textContent = element.textContent;
+                const placeholder = '<span style="visibility: hidden;">' + textContent + '</span>';
+                element.setAttribute('data-content', textContent);
+                element.innerHTML = placeholder;
+                return element;
+            });
+
+            function typeContentIntoElement(element, callback) {
+                const content = element.getAttribute('data-content') || '';
+                let text = '';
+                let charIndex = 0;
+                const typingSpeed = 50;
+
+                function typeChar() {
+                    if (charIndex < content.length) {
+                        text += content.charAt(charIndex);
+                        element.innerHTML = text;
+                        charIndex++;
+                        setTimeout(typeChar, typingSpeed);
+                    } else if (callback) {
+                        callback();
+                    }
+                }
+
+                typeChar();
+            }
+
+            function typeNextElement(index) {
+                if (index < cells.length) {
+                    typeContentIntoElement(cells[index], function () {
+                        typeNextElement(index + 1);
+                    });
+                }
+            }
+
+            typeNextElement(0);
+        }
+    </script>
+</body>
+
+</html>
